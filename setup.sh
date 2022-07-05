@@ -9,7 +9,7 @@ printf "Setting static IP address... "
 
 ETHERNET_CABLE_ID=`connmanctl services | sed 's/.*  //'`
 connmanctl config $ETHERNET_CABLE_ID --ipv4 manual $IP_ADDRESS $NETMASK $GATEWAY --nameservers $DNS_SEVERS
-systemctl restart networking
+# systemctl restart networking
 
 printf "OK\n"
 
@@ -23,12 +23,8 @@ echo '"\e[A": history-search-backward
 
 printf "OK\n"
 
-apt-get update
-apt-get upgrade -y
-
-apt-get install git python3 python3-pip -y
-pip3 install pycampbellcr1000
-
 /opt/scripts/tools/grow_partition.sh
+
+printf "Rebooting...\n"
 
 reboot
